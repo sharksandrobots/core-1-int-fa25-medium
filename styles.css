@@ -178,6 +178,13 @@ body {
 }
 
 /* Featured Image */
+
+/* Apply responsive behavior to all images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
 .featured-image {
   margin: var(--space-2xl) 0 var(--space-3xl);
   border-radius: 6px;
