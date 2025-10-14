@@ -1,27 +1,297 @@
- <!DOCTYPE html>
- <html>
-   <head>
-     <title>Day trips in NYC</title>
-   </head>
-   <body>
-     <h1>Day trips in NYC</h1>
-     <p>Mike Bowser</p>
-     <ul>
-       <li>
-         <a href="entries/entry-1-column.html">Entry 1</a>
-       </li>
-        <li>
-         <a href="entries/entry-2-column.html">Entry 2</a>
-       </li>
-         <li>
-         <a href="entries/entry-3-column.html">Entry 3</a>
-       </li>
-        <li>
-         <a href="entries/entry-photogrid.html">Entry photogrid</a>
-       </li>
-               <li>
-         <a href="entries/layout-entry.html">Layout entry</a>
-       </li>
-     </ul>
-   </body>
- </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYC Day Trips - Discover Hidden Rhythms</title>
+  <link rel="stylesheet" href="styles.css">
+ <style>
+    /* Homepage-specific styles */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      width: 100%;
+      height: 70vh;
+      min-height: 500px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      margin: 0;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      grid-area: 1 / 1;
+      display: block;
+      margin: 0;
+    }
+
+    .hero-overlay {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+      grid-area: 1 / 1;
+    }
+
+    .hero-content {
+      grid-area: 1 / 1;
+      max-width: 900px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      color: white;
+      font-size: 4.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .hero-content p {
+      color: white;
+      font-size: 1.25rem;
+      line-height: 1.8;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+      margin: 0;
+    }
+
+    .trips-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .trips-intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .trips-intro h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .trips-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2rem;
+    }
+
+    .trip-card {
+      display: block;
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .trip-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .trip-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin: 0;
+    }
+
+    .trip-content {
+      padding: 1.5rem;
+    }
+
+    .trip-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .trip-description {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .trips-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+
+      .trips-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        height: 60vh;
+        min-height: 400px;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .trips-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .trips-intro h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .trips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2070&auto=format&fit=crop" alt="NYC Skyline" class="hero-image">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Discover NYC's Hidden Rhythms Through Perfect Day Trips</h1>
+      <p>Escape the ordinary and tune into New York City's most harmonious experiences with our curated collection of day trips that strike the perfect chord between adventure and tranquility. From the melodic sounds of street musicians in Washington Square Park to the peaceful resonance of The Cloisters overlooking the Hudson River, each carefully selected destination offers its own unique frequency in the grand symphony of city life.</p>
+      
+    </div>
+  </section>
+  <main>
+  <!-- Trips Grid Section -->
+  <div class="trips-container">
+    <div class="trips-intro">
+      <h2>Featured Day Trips</h2>
+      <p>Ten carefully curated experiences that capture the essence of New York City</p>
+    </div>
+
+    <div class="trips-grid">
+      <!-- Trip Card 1 -->
+      <a href="entries/entry-1.html" class="trip-card">
+        <img src="images/img-1.jpg" class="trip-image" alt="The Cloisters">
+        <div class="trip-content">
+          <h3 class="trip-title">The Cloisters</h3>
+          <p class="trip-description">Medieval art and architecture overlooking the Hudson River in Fort Tryon Park.</p>
+        </div>
+      </a>
+
+      <!-- Trip Card 2 -->
+      <a href="entries/entry-2.html" class="trip-card">
+        <img src="https://images.unsplash.com/photo-1569982175971-d92b01cf8694?q=80&w=2035&auto=format&fit=crop" class="trip-image" alt="Brooklyn Botanic Garden">
+        <div class="trip-content">
+          <h3 class="trip-title">Brooklyn Botanic Garden</h3>
+          <p class="trip-description">52 acres of botanical bliss featuring seasonal blooms and tranquil Japanese gardens.</p>
+        </div>
+      </a>
+
+      <!-- Trip Card 3 -->
+      <a href="entries/entry-3.html" class="trip-card">
+        <img src="https://images.unsplash.com/photo-1569982175971-d92b01cf8694?q=80&w=2035&auto=format&fit=crop" class="trip-image" alt="Governors Island">
+        <div class="trip-content">
+          <h3 class="trip-title">Governors Island</h3>
+          <p class="trip-description">Car-free island escape with art installations, parks, and stunning harbor views.</p>
+        </div>
+      </a>
+
+      <!-- Trip Card 4 -->
+      <a href="entries/entry-4.html" class="trip-card">
+        <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?q=80&w=2070&auto=format&fit=crop" class="trip-image" alt="Wave Hill">
+        <div class="trip-content">
+          <h3 class="trip-title">Wave Hill</h3>
+          <p class="trip-description">Public garden and cultural center in the Bronx with sweeping views of the Hudson.</p>
+        </div>
+      </a>
+
+      <!-- Trip Card 5 -->
+      <a href="entries/entry-5.html" class="trip-card">
+        <img src="https://images.unsplash.com/photo-1555109307-f7d9da25c244?q=80&w=2070&auto=format&fit=crop" class="trip-image" alt="Smorgasburg">
+        <div class="trip-content">
+          <h3 class="trip-title">Smorgasburg</h3>
+          <p class="trip-description">America's largest open-air food market featuring 100+ local vendors every weekend.</p>
+        </div>
+      </a>
+
+      <!-- Trip Card 6 -->
+      <a href="entries/entry-6.html" class="trip-card">
+        <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?q=80&w=2070&auto=format&fit=crop" class="trip-image" alt="Green-Wood Cemetery">
+        <div class="trip-content">
+          <h3 class="trip-title">Green-Wood Cemetery</h3>
+          <p class="trip-description">Historic 478-acre cemetery offering serene paths and stunning gothic architecture.</p>
+        </div>
+      </a>
+
+      <!-- Trip Card 7 -->
+      <a href="entries/entry-7.html" class="trip-card">
+        <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?q=80&w=2070&auto=format&fit=crop" class="trip-image" alt="Roosevelt Island">
+        <div class="trip-content">
+          <h3 class="trip-title">Roosevelt Island</h3>
+          <p class="trip-description">Ride the aerial tramway to this narrow island with parks and East River views.</p>
+        </div>
+      </a>
+
+      <!-- Trip Card 8 -->
+      <a href="entries/entry-8.html" class="trip-card">
+        <img src="https://images.unsplash.com/photo-1569982175971-d92b01cf8694?q=80&w=2035&auto=format&fit=crop" class="trip-image" alt="New York Botanical Garden">
+        <div class="trip-content">
+          <h3 class="trip-title">NY Botanical Garden</h3>
+          <p class="trip-description">250 acres of gardens, collections, and the last remnant of original NYC forest.</p>
+        </div>
+      </a>
+
+      <!-- Trip Card 9 -->
+      <a href="entries/entry-9.html" class="trip-card">
+        <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?q=80&w=2070&auto=format&fit=crop" class="trip-image" alt="City Island">
+        <div class="trip-content">
+          <h3 class="trip-title">City Island</h3>
+          <p class="trip-description">Nautical neighborhood in the Bronx with seafood restaurants and maritime charm.</p>
+        </div>
+      </a>
+
+      <!-- Trip Card 10 -->
+      <a href="entries/entry-10.html" class="trip-card">
+        <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?q=80&w=2070&auto=format&fit=crop" class="trip-image" alt="Socrates Sculpture Park">
+        <div class="trip-content">
+          <h3 class="trip-title">Socrates Sculpture Park</h3>
+          <p class="trip-description">Outdoor museum and studio space in Queens with rotating contemporary sculptures.</p>
+         
+        </div>
+      </a>
+    </div>
+  </div>
+   <p><a href="styleguide.html">Styleguide</a></p>
+   </main>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Styleguide</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Styleguide-specific styles only */
+    .styleguide-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 3rem;
+      border-radius: 8px;
+    }
+
+    .styleguide-title {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+      border-bottom: 4px solid var(--color-primary);
+      padding-bottom: 1rem;
+    }
+
+    .styleguide-subtitle {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      color: var(--gray-600);
+      margin-bottom: 3rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--color-secondary);
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--gray-200);
+      padding-bottom: 0.5rem;
+    }
+
+    .heading-example {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background-color: var(--gray-50);
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .heading-label {
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .list-example {
+      padding: 1.5rem;
+      background-color: var(--gray-50);
+      border-left: 4px solid var(--color-accent);
+      margin-bottom: 2rem;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .color-swatch {
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .color-sample {
+      height: 120px;
+      width: 100%;
+    }
+
+    .color-info {
+      padding: 1rem;
+      background-color: white;
+    }
+
+    .color-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--gray-900);
+      margin-bottom: 0.25rem;
+    }
+
+    .color-variable {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--color-secondary);
+      margin-bottom: 0.25rem;
+    }
+
+    .color-hex {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+
+    .font-showcase {
+      padding: 1.5rem;
+      background-color: var(--gray-50);
+      margin-bottom: 1rem;
+    }
+
+    .font-showcase.heading {
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .font-showcase.body {
+      border-left: 4px solid var(--color-accent);
+    }
+
+    .font-showcase-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .font-showcase-variable {
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: var(--gray-600);
+    }
+
+    .font-showcase-sample {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="styleguide-container">
+    <h1 class="styleguide-title">CSS Styleguide</h1>
+    <p class="styleguide-subtitle">A comprehensive guide to typography, colors, and styling conventions</p>
+
+    <!-- Typography Section -->
+    <div class="section">
+      <h2 class="section-title">Typography</h2>
+      
+      <div class="heading-example">
+        <div class="heading-label">Heading 1 (5.6rem)</div>
+        <h1>The Quick Brown Fox</h1>
+      </div>
+
+      <div class="heading-example">
+        <div class="heading-label">Heading 2 (4.2rem)</div>
+        <h2>The Quick Brown Fox</h2>
+      </div>
+
+      <div class="heading-example">
+        <div class="heading-label">Heading 3 (3.2rem)</div>
+        <h3>The Quick Brown Fox</h3>
+      </div>
+
+      <div class="heading-example">
+        <div class="heading-label">Heading 4 (2.4rem)</div>
+        <h4>The Quick Brown Fox</h4>
+      </div>
+
+      <div class="heading-example">
+        <div class="heading-label">Heading 5 (1.8rem)</div>
+        <h5>The Quick Brown Fox</h5>
+      </div>
+
+      <div class="heading-example">
+        <div class="heading-label">Heading 6 (1.333rem)</div>
+        <h6>The Quick Brown Fox</h6>
+      </div>
+    </div>
+
+    <!-- Body Copy Section -->
+    <div class="section">
+      <h2 class="section-title">Body Copy</h2>
+      <p>This is standard body text using PT Serif with a font weight of 400 and line height of 1.6. The body text is designed for optimal readability with comfortable spacing between lines. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Multiple paragraphs have a bottom margin of 1rem to create clear visual separation. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+
+    <!-- Lists Section -->
+    <div class="section">
+      <h2 class="section-title">Lists</h2>
+      
+      <h4>Unordered List</h4>
+      <div class="list-example">
+        <ul>
+          <li>First item in the unordered list</li>
+          <li>Second item with some longer text to demonstrate line wrapping and spacing</li>
+          <li>Third item in the list</li>
+          <li>Fourth item showing consistent spacing</li>
+          <li>Fifth and final item</li>
+        </ul>
+      </div>
+
+      <h4>Ordered List</h4>
+      <div class="list-example">
+        <ol>
+          <li>First step in the ordered list</li>
+          <li>Second step with additional context and longer text</li>
+          <li>Third step in the sequence</li>
+          <li>Fourth step maintaining consistent formatting</li>
+          <li>Fifth and final step</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Pull Quote Section -->
+    <div class="section">
+      <h2 class="section-title">Pull Quote</h2>
+      <blockquote class="pullquote">
+        "Design is not just what it looks like and feels like. Design is how it works."
+      </blockquote>
+    </div>
+
+    <!-- Color Palette Section -->
+    <div class="section">
+      <h2 class="section-title">Brand Colors</h2>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #D2691E;"></div>
+          <div class="color-info">
+            <div class="color-name">Primary</div>
+            <div class="color-variable">--color-primary</div>
+            <div class="color-hex">#D2691E</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #8B4513;"></div>
+          <div class="color-info">
+            <div class="color-name">Secondary</div>
+            <div class="color-variable">--color-secondary</div>
+            <div class="color-hex">#8B4513</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #DAA520;"></div>
+          <div class="color-info">
+            <div class="color-name">Accent</div>
+            <div class="color-variable">--color-accent</div>
+            <div class="color-hex">#DAA520</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #A0522D;"></div>
+          <div class="color-info">
+            <div class="color-name">Tertiary</div>
+            <div class="color-variable">--color-tertiary</div>
+            <div class="color-hex">#A0522D</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #CD853F;"></div>
+          <div class="color-info">
+            <div class="color-name">Highlight</div>
+            <div class="color-variable">--color-highlight</div>
+            <div class="color-hex">#CD853F</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Neutral Tints Section -->
+    <div class="section">
+      <h2 class="section-title">Neutral Tint Ramp</h2>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #F9FAFB;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 50</div>
+            <div class="color-variable">--gray-50</div>
+            <div class="color-hex">#F9FAFB</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #F3F4F6;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 100</div>
+            <div class="color-variable">--gray-100</div>
+            <div class="color-hex">#F3F4F6</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #E5E7EB;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 200</div>
+            <div class="color-variable">--gray-200</div>
+            <div class="color-hex">#E5E7EB</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #D1D5DB;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 300</div>
+            <div class="color-variable">--gray-300</div>
+            <div class="color-hex">#D1D5DB</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #9CA3AF;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 400</div>
+            <div class="color-variable">--gray-400</div>
+            <div class="color-hex">#9CA3AF</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #6B7280;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 500</div>
+            <div class="color-variable">--gray-500</div>
+            <div class="color-hex">#6B7280</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #4B5563;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 600</div>
+            <div class="color-variable">--gray-600</div>
+            <div class="color-hex">#4B5563</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #374151;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 700</div>
+            <div class="color-variable">--gray-700</div>
+            <div class="color-hex">#374151</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #1F2937;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 800</div>
+            <div class="color-variable">--gray-800</div>
+            <div class="color-hex">#1F2937</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="color-sample" style="background-color: #111827;"></div>
+          <div class="color-info">
+            <div class="color-name">Gray 900</div>
+            <div class="color-variable">--gray-900</div>
+            <div class="color-hex">#111827</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Font Families Section -->
+    <div class="section">
+      <h2 class="section-title">Font Families</h2>
+      <div class="font-showcase heading">
+        <div class="font-showcase-title" style="font-family: var(--font-heading);">DM Sans</div>
+        <div class="font-showcase-variable">--font-heading</div>
+        <p class="font-showcase-sample" style="font-family: var(--font-heading);">Used for all headings and display text. ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
+      </div>
+      <div class="font-showcase body">
+        <div class="font-showcase-title" style="font-family: var(--font-body);">PT Serif</div>
+        <div class="font-showcase-variable">--font-body</div>
+        <p class="font-showcase-sample">Used for body text, paragraphs, and list items. ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
