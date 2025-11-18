@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Systems: Building Consistent Digital Experiences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .meta {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        nav {
+            background: #f8f9fa;
+            padding: 1.5rem 3rem;
+            border-bottom: 2px solid #e9ecef;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #667eea;
+        }
+        
+        main {
+            padding: 3rem;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h3 {
+            color: #495057;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        h4 {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: #495057;
+            line-height: 1.8;
+        }
+        
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: #495057;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .example-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .example-card h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.1rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.3rem;
+        }
+        
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .component-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .component-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .activity-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .activity-box h4 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .token-example {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            margin: 0.2rem;
+            font-family: monospace;
+        }
+        
+        .timing {
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+        
+        footer {
+            background: #f8f9fa;
+            padding: 2rem 3rem;
+            text-align: center;
+            color: #6c757d;
+            border-top: 2px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Design Systems</h1>
+            <p class="subtitle">Building Consistent Digital Experiences</p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#structure">Structure</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#building">Building</a></li>
+                <li><a href="#practice">Practice</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <!-- Introduction Section (5 minutes) -->
+            <section id="intro">
+                <h2>Introduction: What Are Design Systems?</h2>
+                <p class="timing">⏱️ 5 minutes</p>
+                
+                <div class="highlight-box">
+                    <p><strong>Opening Question:</strong> How many apps did you use this morning? Did you notice that Instagram, Facebook, and WhatsApp feel similar? That's not an accident—it's a design system at work!</p>
+                </div>
+                
+                <h3>Definition</h3>
+                <p>A design system is a collection of reusable components, guided by clear standards, that can be assembled together to build any number of applications. Think of it as the "LEGO set" for digital products—standardized pieces that fit together in predictable ways.</p>
+                
+                <h3>Why Design Systems Matter</h3>
+                <ul>
+                    <li><strong>Consistency:</strong> Users learn once, use everywhere</li>
+                    <li><strong>Efficiency:</strong> Teams build faster by reusing components</li>
+                    <li><strong>Scale:</strong> Products can grow without losing coherence</li>
+                    <li><strong>Collaboration:</strong> Designers and developers speak the same language</li>
+                    <li><strong>Quality:</strong> Tested, accessible components improve overall product quality</li>
+                </ul>
+                
+                <div class="example-card">
+                    <h4>Real-World Analogy</h4>
+                    <p>Imagine if every time you wanted to build a house, you had to reinvent the brick. Design systems are like having standard bricks, doors, and windows—you focus on creating unique buildings, not reinventing basic materials.</p>
+                </div>
+            </section>
+            
+            <!-- History Section (8 minutes) -->
+            <section id="history">
+                <h2>The Evolution of Design Systems</h2>
+                <p class="timing">⏱️ 8 minutes</p>
+                
+                <h3>From Print to Pixels</h3>
+                <p>Design systems didn't start with digital products. They evolved from centuries of systematic thinking in design and architecture.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1950s-60s</div>
+                        <strong>Swiss Design & Grid Systems</strong>
+                        <p>Josef Müller-Brockmann and the Swiss Style introduced mathematical grids for consistent, clean layouts. This influenced all modern design.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">1970s</div>
+                        <strong>Corporate Identity Manuals</strong>
+                        <p>Companies like IBM and Coca-Cola created comprehensive brand guidelines. NASA's Graphics Standards Manual (1975) is a legendary example.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">1984</div>
+                        <strong>Apple Human Interface Guidelines</strong>
+                        <p>With the Macintosh, Apple introduced the first comprehensive digital interface guidelines, establishing patterns like drag-and-drop.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2006</div>
+                        <strong>Web 2.0 Pattern Libraries</strong>
+                        <p>Yahoo Pattern Library pioneered sharing design patterns publicly, inspiring the open-source design movement.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2013</div>
+                        <strong>Bootstrap Revolution</strong>
+                        <p>Twitter's Bootstrap democratized design systems, allowing anyone to build consistent interfaces quickly.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2014</div>
+                        <strong>Material Design</strong>
+                        <p>Google's Material Design introduced motion and depth to flat design, creating a comprehensive system used across billions of devices.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016-Present</div>
+                        <strong>The Design System Era</strong>
+                        <p>Major companies publish their systems: Salesforce Lightning, IBM Carbon, Shopify Polaris. Design systems become essential infrastructure.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>Key Insight:</strong> Design systems evolved from print's need for consistency to digital's need for scalability. Each era solved the problems of its time, building on previous solutions.</p>
+                </div>
+            </section>
+            
+            <!-- Structure Section (7 minutes) -->
+            <section id="structure">
+                <h2>How Design Systems Are Structured</h2>
+                <p class="timing">⏱️ 7 minutes</p>
+                
+                <h3>The Three Pillars</h3>
+                
+                <div class="component-grid">
+                    <div class="component-item">
+                        <h4>🎨 Design Tokens</h4>
+                        <p>The smallest pieces: colors, typography, spacing, shadows. These are your atoms.</p>
+                    </div>
+                    <div class="component-item">
+                        <h4>🧩 Components</h4>
+                        <p>Buttons, cards, forms. Built from tokens, these are your molecules and organisms.</p>
+                    </div>
+                    <div class="component-item">
+                        <h4>📖 Documentation</h4>
+                        <p>Guidelines, best practices, and examples. This is your instruction manual.</p>
+                    </div>
+                </div>
+                
+                <h3>Design Tokens: The Foundation</h3>
+                <p>Design tokens are the visual design atoms of the design system. They're named entities that store visual design attributes.</p>
+                
+                <div class="code-example">
+                    <pre>// Example Design Tokens
+--color-primary: #667eea;
+--color-text: #1a1a1a;
+--spacing-unit: 8px;
+--font-size-base: 16px;
+--border-radius: 4px;</pre>
+                </div>
+                
+                <p>Why use tokens? Change <span class="token-example">--color-primary</span> once, and it updates everywhere—across web, mobile, and even email!</p>
+                
+                <h3>The Layer Cake Model</h3>
+                <ol>
+                    <li><strong>Foundation Layer:</strong> Core visual language (colors, type, spacing)</li>
+                    <li><strong>Component Layer:</strong> Reusable UI elements</li>
+                    <li><strong>Pattern Layer:</strong> Common component combinations</li>
+                    <li><strong>Page Layer:</strong> Complete layouts and templates</li>
+                </ol>
+                
+                <div class="example-card">
+                    <h4>Practical Example: A Button</h4>
+                    <p><strong>Tokens:</strong> Primary color, text color, padding unit, border radius</p>
+                    <p><strong>Component:</strong> Button (combines tokens with behavior)</p>
+                    <p><strong>Pattern:</strong> Form with submit button</p>
+                    <p><strong>Page:</strong> Login screen using the form pattern</p>
+                </div>
+            </section>
+            
+            <!-- Component Architecture Section (5 minutes) -->
+            <section id="components">
+                <h2>Component Architecture</h2>
+                <p class="timing">⏱️ 5 minutes</p>
+                
+                <h3>What Makes a Good Component?</h3>
+                
+                <div class="highlight-box">
+                    <p><strong>The SOLID Principles for Components:</strong></p>
+                    <ul>
+                        <li><strong>Single Purpose:</strong> Each component does one thing well</li>
+                        <li><strong>Openness:</strong> Flexible enough for different contexts</li>
+                        <li><strong>Loose Coupling:</strong> Works independently of other components</li>
+                        <li><strong>Interface First:</strong> Clear inputs and outputs</li>
+                        <li><strong>Documentation:</strong> Self-explanatory with good examples</li>
+                    </ul>
+                </div>
+                
+                <h3>Atomic Design Methodology</h3>
+                <p>Brad Frost's Atomic Design breaks interfaces into five stages:</p>
+                
+                <div class="component-grid">
+                    <div class="component-item">
+                        <h4>⚛️ Atoms</h4>
+                        <p>Basic HTML elements: buttons, inputs, labels</p>
+                    </div>
+                    <div class="component-item">
+                        <h4>🧬 Molecules</h4>
+                        <p>Simple groups: search form, nav item</p>
+                    </div>
+                    <div class="component-item">
+                        <h4>🦠 Organisms</h4>
+                        <p>Complex components: header, card, form</p>
+                    </div>
+                    <div class="component-item">
+                        <h4>📄 Templates</h4>
+                        <p>Page structures without content</p>
+                    </div>
+                    <div class="component-item">
+                        <h4>📱 Pages</h4>
+                        <p>Templates with real content</p>
+                    </div>
+                </div>
+                
+                <h3>Component States</h3>
+                <p>Every component should account for different states:</p>
+                <ul>
+                    <li><strong>Default:</strong> The normal, resting state</li>
+                    <li><strong>Hover:</strong> Mouse interaction feedback</li>
+                    <li><strong>Active:</strong> Currently being interacted with</li>
+                    <li><strong>Disabled:</strong> Not available for interaction</li>
+                    <li><strong>Loading:</strong> Waiting for data or processing</li>
+                    <li><strong>Error:</strong> Something went wrong</li>
+                    <li><strong>Success:</strong> Action completed successfully</li>
+                </ul>
+            </section>
+            
+            <!-- Examples Section (8 minutes) -->
+            <section id="examples">
+                <h2>Leading Design Systems in the Wild</h2>
+                <p class="timing">⏱️ 8 minutes</p>
+                
+                <h3>Let's explore how major organizations approach design systems:</h3>
+                
+                <div class="example-card">
+                    <h4>🔷 IBM Carbon Design System</h4>
+                    <p><strong>Philosophy:</strong> "Designed for the future, grounded in code"</p>
+                    <p><strong>Strengths:</strong></p>
+                    <ul>
+                        <li>Exceptional accessibility standards (WCAG AAA compliant)</li>
+                        <li>Comprehensive data visualization components</li>
+                        <li>Supports multiple frameworks (React, Vue, Angular)</li>
+                        <li>Open source with active community</li>
+                    </ul>
+                    <p><strong>Unique Feature:</strong> Includes AI guidelines for designing with Watson</p>
+                    <p><strong>Learning Point:</strong> Enterprise systems need to be robust and accessible</p>
+                </div>
+                
+                <div class="example-card">
+                    <h4>🎨 Material Design by Google</h4>
+                    <p><strong>Philosophy:</strong> "Create a visual language that synthesizes classic design principles with innovation"</p>
+                    <p><strong>Strengths:</strong></p>
+                    <ul>
+                        <li>Physics-based motion and interaction</li>
+                        <li>Comprehensive theming system</li>
+                        <li>Cross-platform (Android, iOS, Web)</li>
+                        <li>Material You (M3) personalization features</li>
+                    </ul>
+                    <p><strong>Unique Feature:</strong> Dynamic color extraction from images</p>
+                    <p><strong>Learning Point:</strong> Motion and depth create intuitive interactions</p>
+                </div>
+                
+                <div class="example-card">
+                    <h4>⚡ Salesforce Lightning Design System</h4>
+                    <p><strong>Philosophy:</strong> "Enable anyone to build enterprise-class applications"</p>
+                    <p><strong>Strengths:</strong></p>
+                    <ul>
+                        <li>Complex enterprise patterns (data tables, wizards)</li>
+                        <li>Design tokens as first-class citizens</li>
+                        <li>Detailed accessibility annotations</li>
+                        <li>Voice and tone guidelines</li>
+                    </ul>
+                    <p><strong>Unique Feature:</strong> Blueprint system for complex workflows</p>
+                    <p><strong>Learning Point:</strong> Enterprise needs require sophisticated patterns</p>
+                </div>
+                
+                <div class="example-card">
+                    <h4>🛍️ Shopify Polaris</h4>
+                    <p><strong>Philosophy:</strong> "Help merchants succeed with a great experience"</p>
+                    <p><strong>Strengths:</strong></p>
+                    <ul>
+                        <li>E-commerce specific patterns</li>
+                        <li>Excellent content guidelines</li>
+                        <li>Real merchant data considerations</li>
+                        <li>Mobile-first approach</li>
+                    </ul>
+                    <p><strong>Unique Feature:</strong> Merchant success patterns library</p>
+                    <p><strong>Learning Point:</strong> Domain-specific needs shape system design</p>
+                </div>
+                
+                <div class="example-card">
+                    <h4>🏛️ U.S. Web Design System</h4>
+                    <p><strong>Philosophy:</strong> "Make it easier to build accessible, mobile-friendly government websites"</p>
+                    <p><strong>Strengths:</strong></p>
+                    <ul>
+                        <li>WCAG 2.1 AA accessibility by default</li>
+                        <li>Works without JavaScript</li>
+                        <li>21st Century IDEA Act compliant</li>
+                        <li>Plain language focus</li>
+                    </ul>
+                    <p><strong>Unique Feature:</strong> Progressive enhancement approach</p>
+                    <p><strong>Learning Point:</strong> Inclusive design serves everyone</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>What do they all share?</strong> Open documentation, accessibility focus, token-based architecture, comprehensive components, and active community support.</p>
+                </div>
+            </section>
+            
+            <!-- Building Section (7 minutes) -->
+            <section id="building">
+                <h2>Building Your First Design System</h2>
+                <p class="timing">⏱️ 7 minutes</p>
+                
+                <h3>Start Small: The MVP Approach</h3>
+                <p>You don't need to build everything at once. Start with the essentials and grow organically.</p>
+                
+                <h4>Step 1: Audit What You Have</h4>
+                <div class="activity-box">
+                    <h4>🔍 Interface Inventory Exercise</h4>
+                    <p>Screenshot every unique button in your app. You'll likely find 5-10 variations that should be just 2-3. This reveals your inconsistency debt.</p>
+                </div>
+                
+                <h4>Step 2: Define Your Foundations</h4>
+                <div class="code-example">
+                    <pre>/* Start with these core tokens */
+                    
+// Colors (5-7 max to start)
+Primary: #667eea
+Secondary: #764ba2
+Neutral: #6c757d
+Success: #28a745
+Warning: #ffc107
+Error: #dc3545
+
+// Typography (3-4 sizes)
+Heading: 2rem / 700 weight
+Subheading: 1.5rem / 600 weight  
+Body: 1rem / 400 weight
+Small: 0.875rem / 400 weight
+
+// Spacing (consistent scale)
+Space unit: 8px
+Spacing: 8px, 16px, 24px, 32px, 48px
+
+// Breakpoints (mobile-first)
+Small: 576px
+Medium: 768px
+Large: 1024px</pre>
+                </div>
+                
+                <h4>Step 3: Build Core Components</h4>
+                <p>Start with the components you use most frequently:</p>
+                
+                <ol>
+                    <li><strong>Buttons:</strong> Primary, Secondary, Tertiary</li>
+                    <li><strong>Forms:</strong> Input, Textarea, Select, Checkbox, Radio</li>
+                    <li><strong>Cards:</strong> Basic container component</li>
+                    <li><strong>Typography:</strong> Heading, Body, Caption components</li>
+                    <li><strong>Navigation:</strong> Nav bar, Tabs, Breadcrumbs</li>
+                </ol>
+                
+                <h4>Step 4: Document Everything</h4>
+                <div class="highlight-box">
+                    <p><strong>Documentation Template:</strong></p>
+                    <ul>
+                        <li><strong>What:</strong> What is this component?</li>
+                        <li><strong>When:</strong> When should I use it?</li>
+                        <li><strong>How:</strong> How do I implement it?</li>
+                        <li><strong>Why:</strong> Why these design decisions?</li>
+                        <li><strong>Examples:</strong> Show do's and don'ts</li>
+                    </ul>
+                </div>
+                
+                <h4>Step 5: Create a Living Style Guide</h4>
+                <p>Tools to consider for documentation:</p>
+                <ul>
+                    <li><strong>Storybook:</strong> Component playground and documentation</li>
+                    <li><strong>Figma:</strong> Design and handoff</li>
+                    <li><strong>ZeroHeight:</strong> Design system documentation</li>
+                    <li><strong>Docusaurus:</strong> Documentation websites</li>
+                </ul>
+                
+                <h3>The 10-90 Rule</h3>
+                <p>10% of the work is building components. 90% is governance, documentation, education, and adoption. Plan accordingly!</p>
+            </section>
+            
+            <!-- Practice Section (5 minutes + Q&A) -->
+            <section id="practice">
+                <h2>How Designers Work with Design Systems</h2>
+                <p class="timing">⏱️ 5 minutes</p>
+                
+                <h3>Day-to-Day Workflow</h3>
+                
+                <div class="example-card">
+                    <h4>Morning: New Feature Request</h4>
+                    <p>Product manager wants a "quick win" feature. Instead of designing from scratch:</p>
+                    <ol>
+                        <li>Check existing patterns in the design system</li>
+                        <li>Compose using available components (80% of the work)</li>
+                        <li>Identify gaps that need new components (20%)</li>
+                        <li>Propose new patterns back to the system</li>
+                    </ol>
+                </div>
+                
+                <h3>The Designer's Toolkit</h3>
+                <ul>
+                    <li><strong>Component Libraries:</strong> Pre-built UI kits in Figma/Sketch</li>
+                    <li><strong>Token References:</strong> Quick access to colors, spacing</li>
+                    <li><strong>Pattern Library:</strong> Common solutions to recurring problems</li>
+                    <li><strong>Contribution Guidelines:</strong> How to add to the system</li>
+                </ul>
+                
+                <h3>Collaboration Points</h3>
+                <div class="component-grid">
+                    <div class="component-item">
+                        <h4>With Developers</h4>
+                        <p>Shared language through tokens and component names</p>
+                    </div>
+                    <div class="component-item">
+                        <h4>With PMs</h4>
+                        <p>Faster delivery through reuse</p>
+                    </div>
+                    <div class="component-item">
+                        <h4>With Users</h4>
+                        <p>Consistent experience across products</p>
+                    </div>
+                </div>
+                
+                <div class="activity-box">
+                    <h4>🎯 Quick Activity: Component Hunt</h4>
+                    <p>Open your favorite app. Can you identify:</p>
+                    <ul>
+                        <li>3 different button styles?</li>
+                        <li>The spacing system (4px, 8px, 16px)?</li>
+                        <li>How many fonts are used?</li>
+                        <li>Repeated patterns across screens?</li>
+                    </ul>
+                    <p>You're reverse-engineering their design system!</p>
+                </div>
+                
+                <h3>Key Takeaways</h3>
+                <div class="highlight-box">
+                    <ol>
+                        <li><strong>Design systems are living organisms</strong> - They grow and evolve with your product</li>
+                        <li><strong>Start small, think big</strong> - Begin with foundations and core components</li>
+                        <li><strong>Consistency > Perfection</strong> - Better to have a good system used everywhere than a perfect one used nowhere</li>
+                        <li><strong>Documentation is crucial</strong> - If it's not documented, it doesn't exist</li>
+                        <li><strong>It's about people</strong> - Systems succeed through adoption and collaboration</li>
+                    </ol>
+                </div>
+                
+                <h3>Your Next Steps</h3>
+                <ul>
+                    <li>Explore one design system deeply (pick from our examples)</li>
+                    <li>Try building a mini system: 3 colors, 2 fonts, 5 components</li>
+                    <li>Document one component completely (what, when, how, why)</li>
+                    <li>Join the design systems community (Design Systems Slack)</li>
+                </ul>
+                
+                <div class="activity-box">
+                    <h4>📚 Resources for Further Learning</h4>
+                    <ul>
+                        <li><strong>Book:</strong> "Design Systems" by Alla Kholmatova</li>
+                        <li><strong>Book:</strong> "Atomic Design" by Brad Frost</li>
+                        <li><strong>Website:</strong> designsystems.com - A Figma publication</li>
+                        <li><strong>Podcast:</strong> Design Systems Podcast by Knapsack</li>
+                        <li><strong>Course:</strong> Design Systems with Figma (Figma Academy)</li>
+                        <li><strong>Community:</strong> design.systems Slack workspace</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Q&A Section -->
+            <section>
+                <h2>Questions & Discussion</h2>
+                <p class="timing">⏱️ Remaining time</p>
+                
+                <div class="highlight-box">
+                    <h4>Discussion Prompts:</h4>
+                    <ul>
+                        <li>What inconsistencies have you noticed in apps you use daily?</li>
+                        <li>How might a design system help a startup vs. an enterprise?</li>
+                        <li>What challenges do you foresee in maintaining a design system?</li>
+                        <li>How do design systems impact creativity - constraint or catalyst?</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p><strong>Assignment Preview:</strong> Next week, you'll audit an existing website and propose a basic design system for it. Start thinking about which site you'd like to analyze!</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Lecture prepared for Interaction Design | Freshman/Sophomore Level | 40 Minutes</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Theme Switcher Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2em;
+      transition: background 0.3s, color 0.3s;
+    }
+    .theme-light {
+      background: #f5f5f5;
+      color: #333;
+    }
+    .theme-dark {
+      background: #262626;
+      color: #fafafa;
+    }
+    .switcher {
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+<body class="theme-light">
+  <div class="switcher">
+    <button onclick="setTheme('light')">Light Theme</button>
+    <button onclick="setTheme('dark')">Dark Theme</button>
+  </div>
+  <h1>Theme Switcher Example</h1>
+  <p>This is an example of toggling between light and dark themes.</p>
+  <script>
+    function setTheme(theme) {
+      document.body.className = theme === 'dark' ? 'theme-dark' : 'theme-light';
+    }
+  </script>
+</body>
+</html>

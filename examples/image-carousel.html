@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Optimized Fast Image Carousel</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+      margin: 2em;
+    }
+    .carousel {
+      width: 60vw;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      background: #fff;
+      text-align: center;
+      position: relative;
+    }
+    .carousel img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      display: block;
+    }
+    .controls {
+      margin: 0.5em 0;
+    }
+    .carousel button {
+      padding: 0.4em 1em;
+      margin: 0 0.2em;
+      border: none;
+      background: #4644e4;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Optimized Image Carousel Example</h1>
+  <div class="carousel">
+    <img id="carousel-img" src="../images/img-1.jpg" loading="eager" alt="Slide 1">
+    <div class="controls">
+      <button onclick="prev()">Prev</button>
+      <button onclick="next()">Next</button>
+    </div>
+  </div>
+  <script>
+    // Small, optimized JPG images (replace with your own lightweight images for production)
+    const images = [
+      "../images/img-1.jpg",
+      "../images/img-2.jpg",
+      "../images/img-3.jpg"
+    ];
+    // Preload next two images lazily for smooth navigation
+    images.slice(1).forEach(src => {
+      const img = new Image();
+      img.src = src;
+      img.loading = "lazy";
+    });
+    let idx = 0;
+    function showImage() {
+      const img = document.getElementById('carousel-img');
+      img.src = images[idx];
+      img.alt = "Slide " + (idx + 1);
+    }
+    function prev() {
+      idx = (idx - 1 + images.length) % images.length;
+      showImage();
+    }
+    function next() {
+      idx = (idx + 1) % images.length;
+      showImage();
+    }
+  </script>
+</body>
+</html>

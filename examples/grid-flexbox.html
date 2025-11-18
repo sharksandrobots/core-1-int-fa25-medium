@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid and Flexbox Patterns</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; background: #eee; }
+    h2 { margin-top: 2em; }
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 10px;
+      background: #fff;
+      padding: 1em;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #ccc;
+    }
+    .grid-item {
+      background: #eaf9d0;
+      padding: 1em;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .section { margin-top: 2em; }
+    .flex { display: flex; gap: 10px; background: #fff; padding: 1em; border-radius: 10px; box-shadow: 0 2px 8px #ccc; }
+    .flex-item { background: #d0e9f9; padding: 1em; border-radius: 5px; text-align: center; flex: 1; }
+    .flex-row { flex-direction: row; }
+    .flex-column { flex-direction: column; max-width: 150px; }
+    .flex-center { justify-content: center; align-items: center; }
+    .flex-space-between { justify-content: space-between; }
+  </style>
+</head>
+<body>
+  <h1>CSS Grid & Flexbox Patterns</h1>
+  
+  <h2>Grid Layout (3 columns)</h2>
+  <div class="grid">
+    <div class="grid-item">Grid Item 1</div>
+    <div class="grid-item">Grid Item 2</div>
+    <div class="grid-item">Grid Item 3</div>
+  </div>
+  
+  <div class="section">
+    <h2>Flexbox: Row (default)</h2>
+    <div class="flex flex-row">
+      <div class="flex-item">A</div>
+      <div class="flex-item">B</div>
+      <div class="flex-item">C</div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>Flexbox: Column</h2>
+    <div class="flex flex-column" style="height: 200px;">
+      <div class="flex-item">A</div>
+      <div class="flex-item">B</div>
+      <div class="flex-item">C</div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>Flexbox: Centered</h2>
+    <div class="flex flex-center" style="height: 120px;">
+      <div class="flex-item">Centered</div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>Flexbox: Space Between</h2>
+    <div class="flex flex-space-between">
+      <div class="flex-item">Left</div>
+      <div class="flex-item">Middle</div>
+      <div class="flex-item">Right</div>
+    </div>
+  </div>
+</body>
+</html>
